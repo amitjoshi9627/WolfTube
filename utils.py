@@ -1,8 +1,17 @@
 import itertools
 import os
+import string
 
 global spinner
 spinner = itertools.cycle('-/|\\')
+
+
+def format_filename(filename):
+    filename = filename.split('/')[-1].split('.')[0]
+    punc = string.punctuation + "'"+'"'
+    for p in punc:
+        filename = filename.replace(p, '')
+    return filename
 
 
 def show_notification(file_Name, content='Video'):
