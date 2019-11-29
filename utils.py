@@ -8,8 +8,11 @@ spinner = itertools.cycle('-/|\\')
 def show_notification(file_Name, content='Video'):
     file_Name = file_Name.replace(' ', '_')
     message = f"Downloaded-{content}={file_Name}"
-    title = "Downtube"
-    os.system(f"notify-send  {title} {message}")
+    if os.name == 'posix':
+        title = "Downtube"
+        os.system(f"notify-send  {title} {message}")
+    else:
+        print(message)
 
 
 def progress(percent):
