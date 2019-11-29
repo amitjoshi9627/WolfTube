@@ -74,8 +74,10 @@ def my_hook_video(d):
     if d['status'] == 'finished' and flag:
         print('Done downloading')
         print(f"File Size: {round(d['total_bytes']/1024,2)} Kib")
-        filename = d['filename'].split('/')[1]
-        filename = filename.split('.')[0]
+        try:
+            filename = format_filename(d['filename'])
+        except:
+            filename = d['filename']
         show_notification(filename)
 
     else:
@@ -89,10 +91,13 @@ def my_hook_video(d):
 def my_hook_audio(d):
 
     if d['status'] == 'finished':
-        filename = d['filename'].split('/')[1]
-        filename = filename.split('.')[0]
         print('Done downloading')
         print(f"File Size: {round(d['total_bytes']/1024,2)} Kib")
+        try:
+            filename = format_filename(d['filename'])
+        except:
+            filename = d['filename']
+        print(filename)
         show_notification(filename, 'Audio')
 
     else:
