@@ -4,6 +4,7 @@ from download import *
 
 
 try:
+    windows_requirements_fix()
     arg = parse_argument()
 
     download(arg)
