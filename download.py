@@ -39,14 +39,12 @@ def download_audio(url='https://youtu.be/8VK3YUhZKx8', no_playlist=True):
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
     except Exception as Error:
-        print(Error)
         print("Download Error")
         sys.exit(0)
 
 
 def download_video(url="https://youtu.be/8VK3YUhZKx8", no_playlist=True):
     check_dir("V")
-
     ydl_opts = {'outtmpl': 'Video/%(title)s.%(ext)s',
                 'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio',
                 'logger': MyLogger(),
@@ -60,7 +58,6 @@ def download_video(url="https://youtu.be/8VK3YUhZKx8", no_playlist=True):
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
     except Exception as Error:
-        print(Error)
         print("Download Error")
         sys.exit(0)
 
@@ -97,7 +94,6 @@ def my_hook_audio(d):
             filename = format_filename(d['filename'])
         except:
             filename = d['filename']
-        print(filename)
         show_notification(filename, 'Audio')
 
     else:
