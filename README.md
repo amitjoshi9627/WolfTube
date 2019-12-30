@@ -17,7 +17,7 @@ WolfTube is a simple to use Video/Audio Downloader
   > -V <VIDEO_URL>, --video <VIDEO_URL> 
                         Download Video. \
   > -A <AUDIO_URL>, --audio <AUDIO_URL> 
-                        Download Audio. \
+                        Download Audio.
 ##### After Arguments Please add URL
 
 
