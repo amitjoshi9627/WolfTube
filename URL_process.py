@@ -10,14 +10,14 @@ def print_error(error_msg):
 
 def parse_argument():
     parser = argparse.ArgumentParser(
-        prog="DownTube", description="Youtube Downloader")
+        prog="wolftube.py", description="Youtube Downloader")
 
-    parser.add_argument("-P", '--playlist', dest='playlist_url',
+    parser.add_argument("-P", '--playlist', dest='<playlist_url>',
                         help="Download Playlist", action='store_true', default=False)
 
-    parser.add_argument('-V', '--video', dest='video_url',
+    parser.add_argument('-V', '--video', dest='<video_url>',
                         help="Download Video", required=True)
-    parser.add_argument('-A', '--audio', dest='audio_url',
+    parser.add_argument('-A', '--audio', dest='<audio_url>',
                         help="Download Audio", required=True)
 
     try:
