@@ -124,6 +124,3 @@ class MyLogger(object):
 
     def error(self, msg):
         print(msg)
-
-
-windows_requirements_fix()
