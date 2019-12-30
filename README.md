@@ -9,15 +9,15 @@ WolfTube is a simple to use Video/Audio Downloader
 
 #### Optional arguments:
 
-  > -h, --help            show this help message and exit.
+  > -h, --help            show this help message and exit. \
   > -P, --playlist        Download Playlist.
   
 #### Mandatory arguments:
 
-  > -V <VIDEO_URL>, --video <VIDEO_URL>
-                        Download Video.
-  > -A <AUDIO_URL>, --audio <AUDIO_URL>
-                        Download Audio.
+  > -V <VIDEO_URL>, --video <VIDEO_URL> \
+                        Download Video. \
+  > -A <AUDIO_URL>, --audio <AUDIO_URL> \
+                        Download Audio. \
 ##### After Arguments Please add URL
 
 
