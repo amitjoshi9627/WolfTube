@@ -11,58 +11,72 @@ spinner = itertools.cycle('-/|\\')
 spin = itertools.cycle('-/|\\')
 
 
+def download_ffmpeg(file):
+    try:
+        print("Beginning file download with requests..")
+        url = 'https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-20191126-59d264b-win64-static.zip'
+        r = requests.get(url, stream=True)
+
+        with open(file, 'wb') as f:
+            total_length = int(r.headers.get('content-length'))
+            if total_length is None:
+                f.write(r.content)
+            else:
+                dl = 0
+                for data in r.iter_content(chunk_size=4096):
+                    dl += len(data)
+                    f.write(data)
+                    done = int(50 * dl / total_length)
+                    not_done = 50 - done
+                    prog = '[' + '='*done + '-' * not_done + ']'
+                    percent = str(round(50 * dl / total_length, 1)*2) + '%'
+                    print("Downloading ffmpeg", next(spin),
+                          prog, percent, '\r', end='')
+    except:
+        print()
+        print("Error Downloading ffmpeg. Please try again..")
+        return
+
+
+def extract_ffmpeg(file):
+    try:
+        with zipfile.ZipFile(file, "r") as zip_ref:
+            zip_ref.extractall("ffmpeg")
+    except:
+        print("Bad Zip file. Downloading ffmpeg again..")
+        download_ffmpeg(file)
+
+
+def set_path():
+    print("Setting path variable..")
+    try:
+        cwd = os.getcwd()
+        path = 'ffmpeg/ffmpeg-20191126-59d264b-win64-static/bin'
+        path_variable = os.path.join(cwd, path)
+
+        subprocess.call(f"setx PATH '%path%;{path_variable}'")
+    except:
+        print("Error setting path variable. Please try again..")
+        return
+
+
 def windows_requirements_fix():
 
     if os.name is not 'nt':
         return
 
     try:
-        print("Beginning file download with requests..")
-        try:
-            url = 'https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-20191126-59d264b-win64-static.zip'
-            r = requests.get(url, stream=True)
-            file = 'ffmpeg-20191126-59d264b-win64-static.zip'
-            with open(file, 'wb') as f:
-                total_length = int(r.headers.get('content-length'))
-                if total_length is None:
-                    f.write(r.content)
-                else:
-                    dl = 0
-                    for data in r.iter_content(chunk_size=4096):
-                        dl += len(data)
-                        f.write(data)
-                        done = int(50 * dl / total_length)
-                        not_done = 50 - done
-                        prog = '[' + '='*done + '-' * not_done + ']'
-                        percent = str(round(50 * dl / total_length, 1)*2) + '%'
-                        print("Downloading ffmpeg", next(spin),
-                              prog, percent, '\r', end='')
-        except:
+        file = 'ffmpeg-20191126-59d264b-win64-static.zip'
+        if not os.path.isfile(file):
+            download_ffmpeg(file)
             print()
-            print("Error Downloading ffmpeg. Please try again..")
-            return
+            print("Downloaded ffmpeg. Extracting...")
+        if not os.path.isdir('ffmpeg'):
+            extract_ffmpeg(file)
 
-        print()
-        print("Downloaded ffmpeg. Extracting...")
-        try:
-            with zipfile.ZipFile("ffmpeg-20191126-59d264b-win64-static.zip", "r") as zip_ref:
-                zip_ref.extractall("ffmpeg")
-        except:
-            print("Error extracting zipfile. Please try again..")
-            return
+        set_path()
 
-        print("Setting path variable..")
-        try:
-            cwd = os.getcwd()
-            path = 'ffmpeg/ffmpeg-20191126-59d264b-win64-static/bin'
-            path_variable = os.path.join(cwd, path)
-
-            subprocess.call(f"setx PATH '%path%;{path_variable}'")
-        except:
-            print("Error setting path variable. Please try again..")
-            return
-
-    except:
+    except Exception as error:
         print("Error fixing Windows requirements. Please try again!")
 
 
