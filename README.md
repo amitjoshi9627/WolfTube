@@ -31,7 +31,7 @@ WolfTube is a simple to use Video/Audio Downloader
 4. For Downloading Audio Playlist - `python3 wolftube.py -P -A https://youtu.be/lTTajzrSkCw?list=PLXCjrN_k057Fyr47rOTca9qfP1mfauhdu`
 
 
-##### If you are getting error on python versions in Windows Please try changing python3 to python in each command you run.
+##### If you are getting error on python versions in Windows. Please try changing `python3` to `python` in each command you run.
 
 
 ## Thank You!
