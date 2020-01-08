@@ -2,6 +2,7 @@ import itertools
 import os
 import sys
 import string
+import subprocess
 
 global spinner
 spinner = itertools.cycle('-/|\\')
@@ -17,10 +18,10 @@ def format_filename(filename):
 
 def show_notification(file_Name, content='Video'):
     file_Name = file_Name.replace(' ', '_')
-    message = f"Downloaded-{content}={file_Name}"
+    message = "Downloaded-"+str(content)+"="+str(file_Name)
     if os.name == 'posix':
         title = "Wolftube"
-        os.system(f"notify-send  {title} {message}")
+        subprocess.call(['notify-send',title,message])
     else:
         print(message)
 

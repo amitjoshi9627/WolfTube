@@ -12,12 +12,12 @@ def parse_argument():
     parser = argparse.ArgumentParser(
         prog="wolftube.py", description="Youtube Downloader")
 
-    parser.add_argument("-P", '--playlist', dest='<playlist_url>',
+    parser.add_argument("-P", '--playlist', dest='playlist_url',
                         help="Download Playlist", action='store_true', default=False)
 
-    parser.add_argument('-V', '--video', dest='<video_url>',
+    parser.add_argument('-V', '--video', dest='video_url',
                         help="Download Video", required=True)
-    parser.add_argument('-A', '--audio', dest='<audio_url>',
+    parser.add_argument('-A', '--audio', dest='audio_url',
                         help="Download Audio", required=True)
 
     try:
@@ -33,5 +33,5 @@ def parse_argument():
                 return (3, args.video_url)
             elif args.audio_url:
                 return (4, args.audio_url)
-    except:
+    except Exception as e:
         print("After Arguments Please add URL")

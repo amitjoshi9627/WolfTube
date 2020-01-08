@@ -13,7 +13,7 @@ def download_ffmpeg(file):
 
         with open(file, 'wb') as f:
             total_length = int(r.headers.get('content-length'))
-            if total_length is None:
+            if total_length == None:
                 f.write(r.content)
             else:
                 dl = 0
@@ -41,7 +41,7 @@ def extract_ffmpeg(file):
         download_ffmpeg(file)
 
 def path_exist(path):
-    command = f'echo ;%PATH%; | find /C /I ";{path};"'
+    command = 'echo ;%PATH%; | find /C /I ";'+str(path)+';"'
     output = subprocess.Popen(command, stdout=subprocess.PIPE,shell = True ).communicate()[0]
     check = int(re.findall(r'\d',str(output))[0])
     return check
@@ -54,13 +54,13 @@ def set_path():
         if path_exist(path_variable):
             return
         print("Setting path variable..")
-        subprocess.call(f'setx PATH %path%;{path_variable}')
+        subprocess.call('setx PATH %path%;'+str(path_variable)+' ')
     except:
         print("Error setting path variable. Please try again..")
         return
 
 
-def windows_requirements_fix():
+def windows_req_fix():
     try:
         file = 'ffmpeg-20191126-59d264b-win64-static.zip'
         if not os.path.isfile(file):
@@ -74,8 +74,3 @@ def windows_requirements_fix():
 
     except Exception as error:
         print("Error fixing Windows requirements. Please try again!")
-
-
-if __name__ == "__main__":
-    if os.name is 'nt':
-        windows_requirements_fix()

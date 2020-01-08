@@ -70,7 +70,7 @@ def my_hook_video(d):
 
     if d['status'] == 'finished' and flag:
         print('Done downloading')
-        print(f"File Size: {round(d['total_bytes']/1024,2)} Kib")
+        print("File Size: ", str(round(d['total_bytes']/1024,2)),'Kib')
         try:
             filename = format_filename(d['filename'])
         except:
@@ -89,7 +89,7 @@ def my_hook_audio(d):
 
     if d['status'] == 'finished':
         print('Done downloading')
-        print(f"File Size: {round(d['total_bytes']/1024,2)} Kib")
+        print("File Size:",{round(d['total_bytes']/1024,2)},"Kib")
         try:
             filename = format_filename(d['filename'])
         except:
