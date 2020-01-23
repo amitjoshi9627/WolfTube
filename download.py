@@ -47,9 +47,13 @@ def download_audio(url='https://youtu.be/8VK3YUhZKx8', no_playlist=True, start=1
         sys.exit(0)
 
 
-def download_video(url="https://youtu.be/8VK3YUhZKx8", no_playlist=True):
+def download_video(url="https://youtu.be/8VK3YUhZKx8", no_playlist=True, start=1, end=None):
     check_dir("V")
     ydl_opts = {'outtmpl': 'Video/%(title)s.%(ext)s',
+                'restrictfilenames': True,
+                'ignoreerrors': True,
+                'playliststart': start,
+                'plalistend': end,
                 'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio',
                 'logger': MyLogger(),
                 'writesubtitles': True,
