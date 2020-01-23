@@ -6,5 +6,5 @@ try:
     arg = parse_argument()
     download(arg)
 except:
-    print("Due to some technical Error the program is exiting.. Please Try again..")
+    print("\nDue to some technical Error the program is exiting.. Please Try again..")
     sys.exit(0)

@@ -19,13 +19,17 @@ def download(arg):
             download_audio(url, False)
 
 
-def download_audio(url='https://youtu.be/8VK3YUhZKx8', no_playlist=True):
+def download_audio(url='https://youtu.be/8VK3YUhZKx8', no_playlist=True, start=1, end=None):
     check_dir("A")
     ydl_opts = {
         'outtmpl': 'Audio/%(title)s.%(ext)s',
         'format': 'bestaudio/best',
         'writesubtitles': False,
         'noplaylist': no_playlist,
+        'restrictfilenames': True,
+        'ignoreerrors': True,
+        'playliststart': start,
+        'plalistend': end,
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
@@ -70,7 +74,7 @@ def my_hook_video(d):
 
     if d['status'] == 'finished' and flag:
         print('Done downloading')
-        print("File Size: ", str(round(d['total_bytes']/1024,2)),'Kib')
+        print("File Size: ", str(round(d['total_bytes']/1024, 2)), 'Kib')
         try:
             filename = format_filename(d['filename'])
         except:
@@ -89,7 +93,7 @@ def my_hook_audio(d):
 
     if d['status'] == 'finished':
         print('Done downloading')
-        print("File Size:",{round(d['total_bytes']/1024,2)},"Kib")
+        print("File Size:", {round(d['total_bytes']/1024, 2)}, "Kib")
         try:
             filename = format_filename(d['filename'])
         except:
