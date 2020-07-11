@@ -35,3 +35,4 @@ WolfTube is a simple to use Video/Audio Downloader
 
 
 ## Thank You!
+__Please Give a :star2: if you :+1: it.__
