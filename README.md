@@ -1,5 +1,10 @@
 # WolfTube
-WolfTube is a simple to use Video/Audio Downloader
+WolfTube is a simple to use Video/Audio Downloader.
+#### _UPDATE_: Added a Web app and URL check
+
+<img src="img/screenshot1.png?raw=true" width="1000">
+<img src="img/screenshot2.png?raw=true" width="1000">
+<img src="img/screenshot3.png?raw=true" width="1000">
 
 > Run `pip install -r requirements.txt`. If any problem occurs then run `pip install -r requirements.txt --user`
 
