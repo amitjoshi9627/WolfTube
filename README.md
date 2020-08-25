@@ -22,6 +22,7 @@ WolfTube is a simple to use Video/Audio Downloader
 
 
 ### Example: 
+> First go to the _src/_ folder 
 1. For Downloading Single Video  - `python3 wolftube.py -V https://youtu.be/lTTajzrSkCw?list=PLXCjrN_k057Fyr47rOTca9qfP1mfauhdu`
 
 2. For Downloading Video Playlist - `python3 wolftube.py -P -V https://youtu.be/lTTajzrSkCw?list=PLXCjrN_k057Fyr47rOTca9qfP1mfauhdu`
@@ -33,6 +34,14 @@ WolfTube is a simple to use Video/Audio Downloader
 
 ##### If you are getting error on python versions in Windows. Please try changing `python3` to `python` in each command you run.
 
+## Added Streamlit Web app
+> Made a Web App using [__Streamlit__](https://www.streamlit.io/).
+#### To run Web App:
+1. Go to _src/_ folder.
+2. Run command `streamlit run app.py`
+3. On the Browser, Enter the Url and select a download option.
+4. Click _Download_ button to start Downloading.
+5. Video/ Audio will be downloaded in the Video/Audio Folder.
 
 ## Thank You!
 __Please Give a :star2: if you :+1: it.__
