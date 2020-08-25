@@ -42,11 +42,11 @@ def progress(percent):
 
 def check_dir(content):
     if content == "V":
-        if not os.path.exists("Video"):
-            os.mkdir("Video")
+        if not os.path.exists("../Video"):
+            os.mkdir("../Video")
     else:
-        if not os.path.exists("Audio"):
-            os.mkdir("Audio")
+        if not os.path.exists("../Audio"):
+            os.mkdir("../Audio")
 
 
 def check_formats(url):

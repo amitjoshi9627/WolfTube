@@ -25,7 +25,7 @@ def download(arg):
 def download_audio(url='https://youtu.be/8VK3YUhZKx8', no_playlist=True, start=1, end=None):
     utils.check_dir("A")
     ydl_opts = {
-        'outtmpl': 'Audio/%(title)s.%(ext)s',
+        'outtmpl': '../Audio/%(title)s.%(ext)s',
         'format': 'bestaudio/best',
         'writesubtitles': False,
         'noplaylist': no_playlist,
@@ -50,7 +50,7 @@ def download_audio(url='https://youtu.be/8VK3YUhZKx8', no_playlist=True, start=1
 
 def download_video(url="https://youtu.be/8VK3YUhZKx8", no_playlist=True, start=1, end=None):
     utils.check_dir("V")
-    ydl_opts = {'outtmpl': 'Video/%(title)s.%(ext)s',
+    ydl_opts = {'outtmpl': '../Video/%(title)s.%(ext)s',
                 'restrictfilenames': True,
                 'ignoreerrors': True,
                 'playliststart': start,

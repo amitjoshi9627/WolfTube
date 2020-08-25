@@ -14,6 +14,8 @@ if st.button("Download"):
             if download_type == "Audio":
                 audio_downloaded,if_error = wolftube.Download_file((2,url)) 
                 if audio_downloaded:
+                    with st.spinner("Converting..."):
+                        time.sleep(2)
                     st.success("File Downloaded to Audio/ ")
                 else:
                     st.error(if_error)
@@ -21,6 +23,8 @@ if st.button("Download"):
             elif download_type == "Video":
                 video_downloaded,if_error = wolftube.Download_file((1,url))
                 if video_downloaded:
+                    with st.spinner("Converting..."):
+                        time.sleep(2)
                     st.success("File Downloaded to Video/ ")
                 else:
                     st.error(if_error)
@@ -28,6 +32,8 @@ if st.button("Download"):
             elif download_type == "Video Playlist":
                 audio_downloaded,if_error = wolftube.Download_file((3,url))
                 if audio_downloaded:
+                    with st.spinner("Converting..."):
+                        time.sleep(2)
                     st.success("Files Downloaded to Audio/ ")
                 else:
                     st.error(if_error)
@@ -35,6 +41,8 @@ if st.button("Download"):
             else:
                 video_downloaded,if_error = wolftube.Download_file((4,url))
                 if video_downloaded:
+                    with st.spinner("Converting..."):
+                        time.sleep(2)
                     st.success("Files Downloaded to Video/ ")
                 else:
                     st.error(if_error)
