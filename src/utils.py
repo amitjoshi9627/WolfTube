@@ -3,6 +3,8 @@ import os
 import sys
 import string
 import subprocess
+import pytube
+from pytube import YouTube
 
 global spinner
 spinner = itertools.cycle('-/|\\')
@@ -56,6 +58,18 @@ def check_formats(url):
         if i['format_note'] != 'tiny':
             print(i['format_id'], i['ext'], i['format_note'])
 
+def check_url(url):
+    video_found = True
+    if_error = None
+    try:
+        video = YouTube(url)
+    except pytube.exceptions.RegexMatchError:
+        if_error = 'Invalid URL.'
+        video_found = False
+    except pytube.exceptions.VideoUnavailable:
+        if_error = 'This video is unavailable'
+        video_found = False
+    return video_found,if_error
 
 class MyLogger(object):
     def debug(self, msg):
